@@ -5,16 +5,21 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <LangVersion>latest</LangVersion>
+    <PackageId>Pagaspot.EventFlow.Cassandra.EventStore</PackageId>
+    <Version>0.83.1</Version>
+    <Company>Pagaspot</Company>
+    <Authors>Jan Dabrowski</Authors>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="EventFlow" Version="0.83.4713" />
+    <PackageReference Include="EventFlow" Version="0.83.*" />
     <PackageReference Include="CassandraCSharpDriver" Version="3.17.0" />
   </ItemGroup>
 
   <ItemGroup>
-    <None Remove=".gitignore" />
+    <None Include="..\README.md" Pack="true" PackagePath="\"/>
+    <None Include="..\LICENSE" Pack="true" PackagePath="\"/>
   </ItemGroup>
-
 
 </Project>

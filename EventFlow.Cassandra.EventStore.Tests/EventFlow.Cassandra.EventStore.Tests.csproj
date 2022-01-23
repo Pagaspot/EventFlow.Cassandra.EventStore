@@ -4,6 +4,10 @@
     <TargetFramework>net6.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+    <PackageId>EventFlow.Cassandra.EventStore</PackageId>
+    <Version>0.8.0</Version>
+    <Company>Pagaspot</Company>
+    <Authors>Jan Dabrowski</Authors>
   </PropertyGroup>
 
   <ItemGroup>

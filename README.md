@@ -1,6 +1,7 @@
 
 # EventFlow Cassandra event store driver
 
+<a href="https://www.nuget.org/packages/Pagaspot.EventFlow.Cassandra.EventStore/"><img src="https://img.shields.io/nuget/v/Pagaspot.EventFlow.Cassandra.EventStore.svg" /></a>
 
 1. Implement Cassandra session provider interface and register it in IoC container:
 ```csharp
