@@ -3,7 +3,9 @@
 
 <a href="https://www.nuget.org/packages/Pagaspot.EventFlow.Cassandra.EventStore/"><img src="https://img.shields.io/nuget/v/Pagaspot.EventFlow.Cassandra.EventStore.svg" /></a>
 
-1. Implement Cassandra session provider interface and register it in IoC container:
+## Setup
+
+1. Implement Cassandra session provider interface and register it in the IoC container:
 ```csharp
 public interface ICassandraSessionProvider
 {
@@ -11,7 +13,7 @@ public interface ICassandraSessionProvider
 }
 ```
 It should setup a cluster and call `_cluster.Connect(keyspaceName)` to create a session.
-You can select any keyspace name you like.  
+You can use any keyspace name you like.    
 More details: [DataStax Cassandra Driver](https://github.com/datastax/csharp-driver#basic-usage)
 
 2. Register `CassandraEventStore`:
@@ -29,3 +31,9 @@ ISession session = // ...
 await EventStoreInitializer.Initialize(session);
 ```
 Before any command is issued (e.g. in `Startup.Configure()`): 
+
+
+### Note
+
+This package passes all EventFlow `TestSuiteForEventStore` test cases, but has not been yet battle-tested.  
+Any feedback appreciated
