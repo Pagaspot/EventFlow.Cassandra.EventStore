@@ -6,10 +6,11 @@
     <Nullable>enable</Nullable>
     <LangVersion>latest</LangVersion>
     <PackageId>Pagaspot.EventFlow.Cassandra.EventStore</PackageId>
-    <Version>0.83.1</Version>
+    <Version>0.83.3</Version>
     <Company>Pagaspot</Company>
     <Authors>Jan Dabrowski</Authors>
     <PackageReadmeFile>README.md</PackageReadmeFile>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
   </PropertyGroup>
 
   <ItemGroup>

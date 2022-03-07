@@ -63,12 +63,14 @@ public class CassandraEventStore : IEventPersistence
             aggregateName = sev.Metadata[MetadataKeys.AggregateName];
             var ev = new CommitedEvent()
             {
-                BatchId = Guid.Parse(sev.Metadata[MetadataKeys.BatchId]),
-                AggregateName = aggregateName,
                 AggregateId = id.Value,
+                AggregateSequenceNumber = sev.AggregateSequenceNumber,
+                AggregateName = aggregateName,
+                EventType = sev.Metadata.EventName,
+                EventVersion = sev.Metadata.EventVersion,
                 Data = sev.SerializedData,
                 Metadata = sev.SerializedMetadata,
-                AggregateSequenceNumber = sev.AggregateSequenceNumber
+                TimeStamp = sev.Metadata.Timestamp.UtcDateTime,
             };
 
             result.Add(ev);
