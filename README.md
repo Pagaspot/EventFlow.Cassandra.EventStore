@@ -37,3 +37,15 @@ Before any command is issued (e.g. in `Startup.Configure()`):
 
 This package passes all EventFlow `TestSuiteForEventStore` test cases, but has not been yet battle-tested.  
 Any feedback appreciated
+
+## Changelog
+
+## 0.83.1 -> 0.83.4
+
+Update events table columns:
+```
+ALTER TABLE events DROP batchid;
+ALTER TABLE events ADD eventversion int;
+ALTER TABLE events ADD eventtype text;
+ALTER TABLE events ADD timestamp timestamp;"
+```

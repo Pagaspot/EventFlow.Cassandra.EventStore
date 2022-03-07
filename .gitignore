@@ -7,6 +7,7 @@
 *.sln.docstates
 /.vs
 **/.DS_Store
+build.sh
 
 # Build results
 [Dd]ebug/
