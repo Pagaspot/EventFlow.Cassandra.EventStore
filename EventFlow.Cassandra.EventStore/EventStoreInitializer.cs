@@ -6,10 +6,10 @@ namespace EventFlow.Cassandra.EventStore;
 
 public static class EventStoreInitializer
 {
-    public static async Task Initialize(ISession session)
+    public static async Task Initialize<T>(ISession session) where T : CommitedEvent
     {
-        MappingConfiguration.Global.Define<EventStoreMappings>();
+        MappingConfiguration.Global.Define<EventStoreMappings<T>>();
 
-        await new Table<CommitedEvent>(session).CreateIfNotExistsAsync();
+        await new Table<T>(session).CreateIfNotExistsAsync();
     }
 }

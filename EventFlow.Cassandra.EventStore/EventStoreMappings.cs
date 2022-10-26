@@ -2,11 +2,11 @@ using Cassandra.Mapping;
 
 namespace EventFlow.Cassandra.EventStore;
 
-public class EventStoreMappings : Mappings
+public class EventStoreMappings<T> : Mappings where T : CommitedEvent
 {
     public EventStoreMappings()
     {
-        For<CommitedEvent>()
+        For<T>()
             .TableName("events")
             .PartitionKey(x => x.AggregateId)
             .ClusteringKey(x => x.AggregateSequenceNumber, SortOrder.Ascending);
