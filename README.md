@@ -10,6 +10,7 @@
 public interface ICassandraSessionProvider
 {
     ISession Connect();
+    BatchType DefaultBatchType { get; }
 }
 ```
 It should setup a cluster and call `_cluster.Connect(keyspaceName)` to create a session.
