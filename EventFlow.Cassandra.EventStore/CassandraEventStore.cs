@@ -10,6 +10,7 @@ namespace EventFlow.Cassandra.EventStore;
 public class CassandraEventStore<T> : IEventPersistence where T : CommitedEvent, new()
 {
     private readonly ISession _session;
+    private readonly BatchType _batchType;
     private readonly ICommitedEventFactory<T>? _commitedEventFactory;
 
     public CassandraEventStore(
@@ -17,6 +18,7 @@ public class CassandraEventStore<T> : IEventPersistence where T : CommitedEvent,
         ICommitedEventFactory<T>? commitedEventFactory)
     {
         _session = storage.Connect();
+        _batchType = storage.DefaultBatchType;
         _commitedEventFactory = commitedEventFactory;
     }
 
@@ -57,7 +59,7 @@ public class CassandraEventStore<T> : IEventPersistence where T : CommitedEvent,
 
         var eventTable = new Table<T>(_session);
 
-        var batch = new BatchStatement().SetBatchType(BatchType.Logged);
+        var batch = new BatchStatement().SetBatchType(_batchType);
 
         var result = new List<T>();
         var aggregateName = "";

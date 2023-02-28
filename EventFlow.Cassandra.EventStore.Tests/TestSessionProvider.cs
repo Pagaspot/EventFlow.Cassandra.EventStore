@@ -20,4 +20,6 @@ public class TestSessionProvider : ICassandraSessionProvider
     {
         return _cluster.Connect(Keyspace);
     }
+
+    public BatchType DefaultBatchType => BatchType.Logged;
 }

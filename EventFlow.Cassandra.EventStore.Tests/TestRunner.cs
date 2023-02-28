@@ -15,7 +15,7 @@ public class EventStoreTests : TestSuiteForEventStore
     public void SetUp()
     {
         _sessionProvider = new TestSessionProvider();
-        EventStoreInitializer.Initialize(_sessionProvider.Connect()).GetAwaiter().GetResult();
+        EventStoreInitializer.Initialize<CommitedEvent>(_sessionProvider.Connect()).GetAwaiter().GetResult();
     }
     
     [OneTimeTearDown]
@@ -29,7 +29,7 @@ public class EventStoreTests : TestSuiteForEventStore
     protected override IRootResolver CreateRootResolver(IEventFlowOptions eventFlowOptions)
     {
         eventFlowOptions.RegisterServices(x => x.Register(_ => _sessionProvider));
-        eventFlowOptions.UseEventStore<CassandraEventStore>();
+        eventFlowOptions.UseEventStore<CassandraEventStore<CommitedEvent>>();
         return eventFlowOptions.CreateResolver();
     }
 }
